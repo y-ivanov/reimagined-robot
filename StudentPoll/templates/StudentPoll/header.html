@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block  title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+
+
+<div class="wholePageContainer pageWidth">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid pageWidth">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Student Poll</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li id="main"{% block mainActive %}{% endblock %}><a href="/">Головна</a></li>
+        <li id="statistics" {% block statisticsActive %}{% endblock %}><a href="/statistics/">Статистика</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="admin" {% block adminActive %}{% endblock %}><a href="/poll/admin/">Адмін</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+</div>
+
+<footer class=" footer">
+    <div class="container pageWidth">
+        <p class="text-muted">&#9400; footerhere</p>
+    </div>
+</footer>
+<script src="{% static 'jquery-3.2.0.min.js' %}"></script>
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
+{#<script>jQuery(document).ready(function(){console.log("loaded");});</script>#}
+</body>
+</html>

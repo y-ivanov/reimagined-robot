@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+
+body{
+    /*background-color: #edeef0;*/
+    font-family: "Lato";
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wholePageContainer{
+    margin: 0 auto;
+    padding-top: 70px;
+    margin-bottom: 70px;
+}
+
+.pageWidth{
+    width: 60%;
+}
+
+/*--------------------------------------------------*/
+/*FOOTER STUFF DONTFUCKUP*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #e7e7e7;
+}
+.container .text-muted {
+  /*margin: 20px 0;*/
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+/*UP TO HERE*/
+/*------------------------------------------------------*/
+
+button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*----------------------------------------------*/
+/*TABLESTUFF*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+/*----------------------------------------------*/
+/*----------------------------------------------*/
+/*Voting form*/
+.vote{
+	display: flex;
+	flex-direction: column;
+	color: black;
+}
+
+.container1{
+	width: 100%;
+	margin: -1px;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.container1 .rightHalf{
+	flex: 1 1;
+	display: inline-flex;
+	flex-wrap: wrap;
+	text-align: center;
+	border: 2px solid #bababa ;
+	flex-direction: row;
+}
+
+.container1 .leftHalf{
+	flex: 1 1;
+	display: inline-flex;
+	flex-wrap: wrap;
+	text-align: center;
+	border: 2px solid #bababa ;
+	border-right: none;
+	flex-direction: row;
+}
+
+.grow{
+	flex: 1 1;
+	padding: 5px;
+	margin: 2px;
+	border-radius: 5px;
+}
+
+.radios .radio{
+    background-color: #bababa;
+    color: white;
+    padding: 5px;
+	margin: 2px;
+    flex: 1 1;
+    border-radius: 5px;
+}
+
+.radios input[type=radio]{
+    display:none;
+    /*visibility: hidden;*/
+}
+
+.radios input[type=radio]:checked + .radio{
+	background-color: #087bd3;
+}
+/*----------------------------------------------*/
+

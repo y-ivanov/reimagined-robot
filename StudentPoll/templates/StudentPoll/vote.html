@@ -1,0 +1,86 @@
+{% extends 'StudentPoll/header.html' %}
+{% load static %}
+
+{% block title %}
+    actual vote
+{% endblock %}
+
+{% block content %}
+<div>
+<table>
+    <tr>
+        <td>1</td>
+        <td>Ніяк</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Трохи</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Добре</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Гарно</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Дуже гарно</td>
+    </tr>
+</table>
+</div>
+<form action="{% url 'StudentPoll:Statistics' %}" method="post">
+    {% csrf_token %}
+{% for key, value in groupInfo.items %}
+    <input type="hidden" name="{{ key }}" value="{{ value }}">
+{% endfor %}
+    {% for key, value in subjects %}
+            {% if key != 'Деканат'%}
+                <div class="vote">
+                    <div class="voteCaption">
+                        {{ key }}:{{ value }}
+                    </div>
+                    {% for category in categories %}
+                        <div class="container1">
+                            <div class="leftHalf">
+                                <div class="grow">{{ category }}</div>
+                            </div>
+                            <div class="rightHalf radios">
+                                {% with ''|center:5 as range %}
+                                    {% for i in range %}
+                                        <input type="radio" name="{{ key }}:{{ value }}:{{ category }}" value="{{ forloop.counter }}" id="{{ key }}:{{ category }}:{{ forloop.counter }}" required />
+                                        <label class="radio" for="{{ key }}:{{ category }}:{{ forloop.counter }}">{{ forloop.counter }}</label>
+                                    {% endfor %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="vote">
+                    <div class="voteCaption">
+                        {{ key }}:{{ value }}
+                    </div>
+                    <div class="container1">
+                        <div class="leftHalf">
+                            <div class="grow">Якість роботи</div>
+                        </div>
+                        <div class="rightHalf radios">
+                            {% with ''|center:5 as range %}
+                                {% for i in range %}
+                                    <input type="radio" name="Якість роботи" value="{{ forloop.counter }}" id="{{ key }}:Якість роботи:{{ forloop.counter }}" required/>
+                                    <label class="radio" for="{{ key }}:Якість роботи:{{ forloop.counter }}">{{ forloop.counter }}</label>
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        <hr>
+    {% endfor %}
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+
+{% endblock %}

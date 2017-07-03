@@ -1,0 +1,53 @@
+{% extends "StudentPoll/header.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block content %}
+{#    admin stuff here#}
+    <div class="well well-sm">
+        <div>Додати голосування</div>
+        <form action="{% url 'StudentPoll:pollAdd' %}" method="post">
+        {% csrf_token %}
+            {% for field in pollAdd %}
+    {#            <div>{{ field|field_type }}</div>#}
+                {% if field|field_type == 'booleanfield' %}
+                    {{ field.label_tag }} <br> {{ field }} <br>
+                {% else %}
+                    {{ field.label_tag }} <br> {{ field|add_class:"form-control" }} <br>
+                {% endif %}
+            {% endfor %}
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="well well-sm">
+        <div>Додати категорію оцінювання</div>
+        <form action="{% url 'StudentPoll:categoryAdd' %}" method="post">
+        {% csrf_token %}
+            <input class="form-control" type="text" value="" name="category" required placeholder="Категорія оцінювання">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="well well-sm">
+        <div>Активувати чи деактивувати голосування</div>
+        <form action="{% url 'StudentPoll:editState' %}" method="post">
+        {% csrf_token %}
+            {% for field in voteActivate %}
+                {% if field|field_type == 'modelchoicefield' %}
+                    <div>{{ field.label_tag }} {{ field|add_class:"form-control" }}</div>
+                {% else %}
+                    <div>{{ field.label_tag }} {{ field }}</div>
+                {% endif %}
+            {% endfor %}
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <form action="{% url 'StudentPoll:logout' %}" method="get">
+        <input class="btn btn-danger" type="submit" value="Log Out"/>
+    </form>
+{% endblock %}
